@@ -17,7 +17,7 @@ public class Food {
     // EFFECTS: food has given nutritional value and is located at given cell
     public Food(Cell position, int nutritionalValue) {
         this.position = position;
-        this.nutritionalValue = 0;
+        this.nutritionalValue = nutritionalValue;
     }
 
     public Cell getPosition() {
@@ -28,10 +28,10 @@ public class Food {
     // EFFECTS:  reduces nutritional value of food by DECAY_AMOUNT; if DECAY_AMOUNT is greater than
     //           current nutritional value of food, nutritional value decays to zero
     public void decay() {
-        nutritionalValue = nutritionalValue - DECAY_AMOUNT;
-
-        if (nutritionalValue > 0) {
+        if (DECAY_AMOUNT > nutritionalValue) {
             nutritionalValue = 0;
+        } else {
+            nutritionalValue = nutritionalValue - DECAY_AMOUNT;
         }
     }
 
