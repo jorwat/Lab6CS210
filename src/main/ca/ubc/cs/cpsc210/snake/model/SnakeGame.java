@@ -71,13 +71,13 @@ public class SnakeGame {
 
     // EFFECTS: returns true if game is over
     public boolean isOver() {
-        return snake.selfIntersects() && !isInBounds(snake.getPosition());
+        return snake.selfIntersects() || !isInBounds(snake.getPosition());
     }
 
     // EFFECTS: returns true if cell is in bounds of game
     private boolean isInBounds(Cell cell) {
-        return cell.getColumn() > 0 && cell.getColumn() < BOARD_COLS
-                && cell.getRow() > 0 && cell.getRow() < BOARD_ROWS;
+        return (cell.getColumn() >= 0 && cell.getColumn() < BOARD_COLS
+                && cell.getRow() >= 0 && cell.getRow() < BOARD_ROWS);
     }
 
     // EFFECTS: returns true if snake can eat
